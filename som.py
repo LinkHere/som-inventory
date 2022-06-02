@@ -23,7 +23,7 @@ def run_query(query):
 sheet_url = st.secrets["private_gsheets_url"]
 rows = run_query(f'SELECT * FROM "{sheet_url}"')
 
-df = pd.DataFrame(rows)
+df = pd.DataFrame(rows,columns=['Item'])
 df.index+=1
 st.table(df)
 # Print results.
