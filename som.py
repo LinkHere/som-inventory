@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 from google.oauth2 import service_account
 from gsheetsdb import connect
 
@@ -22,6 +23,8 @@ def run_query(query):
 sheet_url = st.secrets["private_gsheets_url"]
 rows = run_query(f'SELECT * FROM "{sheet_url}"')
 
+df = pd.DataFrame(rows)
+st.table(df)
 # Print results.
-for row in rows:
-    st.write(f"{row.Item} has a :{row.Quantity}:")
+#for row in rows:
+#    st.write(f"{row.Item} has a :{row.Quantity}:")
