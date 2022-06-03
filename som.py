@@ -19,10 +19,12 @@ class SomInventory:
         if selected == "All" and index_title == None:
             index_title = "All"
             data = data
+            data.index+=1
         
         if selected == "Skills Lab Inventory" and index_title == None:
             index_title = "Skills Lab Inventory"
-            data = df[df['Location'] == "Skills Lab"]
+            data = data[data['Location'] == "Skills Lab"]
+            data.index+=1
 
 
         #data2 = data[data['Location'] == "Stock Room"]
