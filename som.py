@@ -20,7 +20,7 @@ class SomInventory:
             index_title = "All"
             data = data
             data = data.sort_values(by=['Item'])
-            data.index+=1
+            data.index = data.index.factorize()[0] + 1
         
         if selected == "Skills Lab Inventory" and index_title == None:
             index_title = "Skills Lab Inventory"
