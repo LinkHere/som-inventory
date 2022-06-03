@@ -19,7 +19,7 @@ class SomInventory:
         if selected == "All" and index_title == None:
             index_title = "All"
             data = data
-            data = data.sort_values(by=['1'], ascending=False)
+            data = data.sort_values(by=['0'], ascending=False)
             data.index+=1
         
         if selected == "Skills Lab Inventory" and index_title == None:
