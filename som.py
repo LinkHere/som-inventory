@@ -24,7 +24,7 @@ class SomInventory:
         if selected == "Skills Lab Inventory" and index_title == None:
             index_title = "Skills Lab Inventory"
             data = data[data['Location'] == "Skills Lab"]
-            data.index+=1
+            data.index = data.index.factorize()[0] + 1
 
 
         #data2 = data[data['Location'] == "Stock Room"]
