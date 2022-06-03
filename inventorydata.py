@@ -16,6 +16,3 @@ class InventoryData:
         rows = conn.execute(query, headers=1)
         rows = rows.fetchall()
         return rows
-
-
-#rows = run_query(f'SELECT * FROM "{sheet_url}"')
