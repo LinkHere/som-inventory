@@ -6,7 +6,7 @@ from inventorydata import InventoryData
 st.set_page_config(
         page_title="SOM-Inventory",
 )
-
+st.title("Inventory") 
 rows = InventoryData.load_data()
 df = pd.DataFrame(rows)
 data = df[['Item','Quantity','Commonly_Used_By','Location']]
