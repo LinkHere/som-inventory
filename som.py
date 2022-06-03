@@ -45,12 +45,16 @@ class SomInventory:
             data = "Not yet sorted!"
             #data = data.sort_values(by=['Item'])
             #data.index = data.index.factorize()[0] + 1
+            st.title(index_title)
+            st.table(data)
 
         if selected == "Microscope Inventory" and index_title == None:
             index_title = "Microscope Inventory"
             data = "Not yet sorted!"
             #data = data.sort_values(by=['Item'])
-            #data.index = data.index.factorize()[0] + 1       
+            #data.index = data.index.factorize()[0] + 1 
+            st.title(index_title)
+            st.table(data)      
 
         st.title(index_title)
         st.table(data)
