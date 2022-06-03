@@ -1,6 +1,7 @@
 import streamlit as st
 
 from connection import DataBConnection
+from gsheetsdb import connect
 
 credentials = DataBConnection.load_credentials()
 conn = connect(credentials=credentials)

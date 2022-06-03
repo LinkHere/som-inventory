@@ -1,6 +1,5 @@
 import streamlit as st
 from google.oauth2 import service_account
-from gsheetsdb import connect
 
 class DataBConnection:
     def load_credentials():
