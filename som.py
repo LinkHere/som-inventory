@@ -11,7 +11,7 @@ rows = InventoryData.load_data()
 df = pd.DataFrame(rows)
 data = df[['Item','Quantity','Commonly_Used_By','Location']]
 option = ['Stock Room', "Dean's Office"]
-data2 = data[data['Location'].isin(option)]
+data2 = data[data['Location'].isin(option[0])]
 #data.index+=1
 st.write("Stock Room")
 st.table(data2)
