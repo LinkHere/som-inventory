@@ -40,3 +40,5 @@ class SomInventory:
             }}
         </style> """, unsafe_allow_html=True)
 
+SomInventory.inventory_list()
+
