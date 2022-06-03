@@ -25,16 +25,21 @@ class SomInventory:
         if selected == "Skills Lab Inventory" and index_title == None:
             index_title = "Skills Lab Inventory"
             data = data[data['Location'] == "Skills Lab"]
+            data = data.sort_values(by=['Item'])
             data.index = data.index.factorize()[0] + 1
 
         if selected == "Dean's Office Inventory" and index_title == None:
             index_title = "Dean's Office Inventory"
             data = data[data['Location'] == "Dean's Office"]
+            data = data.sort_values(by=['Item'])
+            data.index = data.index.factorize()[0] + 1
+
+        if selected == "Stock Room Inventory" and index_title == None:
+            index_title = "Stock Room Inventory"
+            data = data[data['Location'] == "Stock Room"]
+            data = data.sort_values(by=['Item'])
             data.index = data.index.factorize()[0] + 1    
 
-
-        #data2 = data[data['Location'] == "Stock Room"]
-        #data.index+=1
         st.title(index_title)
         st.table(data)
 
