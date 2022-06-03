@@ -8,11 +8,10 @@ st.set_page_config(
 )
 st.title("Inventory") 
 rows = InventoryData.load_data()
-df = pd.DataFrame(rows)
-data = df[['Item','Quantity','Commonly_Used_By','Location']]
-data.index+=1
-if data[3] == "Stock Room":
-    st.write("Stock Room")
+df = pd.DataFrame(rows,columns=['Item','Quantity','Commonly_Used_By','Location'])
+#data = df[['Item','Quantity','Commonly_Used_By','Location']]
+df.index+=1
+st.write("Stock Room")
 st.table(data)
 
 st.markdown(""" <style>
