@@ -46,7 +46,7 @@ class SomInventory:
             #data = data.sort_values(by=['Item'])
             #data.index = data.index.factorize()[0] + 1
             st.title(index_title)
-            st.table(datamsg)
+            st.write(datamsg)
 
         if selected == "Microscope Inventory" and index_title == None:
             index_title = "Microscope Inventory"
@@ -54,7 +54,7 @@ class SomInventory:
             #data = data.sort_values(by=['Item'])
             #data.index = data.index.factorize()[0] + 1 
             st.title(index_title)
-            st.table(datamsg)      
+            st.write(datamsg)      
 
         st.title(index_title)
         st.table(data)
