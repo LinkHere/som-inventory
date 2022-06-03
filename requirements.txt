@@ -1,3 +1,4 @@
 streamlit
 gsheetsdb
 pandas
+streamlit-option-menu
