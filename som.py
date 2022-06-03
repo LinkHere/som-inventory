@@ -11,6 +11,8 @@ rows = InventoryData.load_data()
 df = pd.DataFrame(rows)
 data = df[['Item','Quantity','Commonly_Used_By','Location']]
 data.index+=1
+if df['Location'] == "Stock Room":
+    st.write("Stock Room")
 st.table(data)
 
 st.markdown(""" <style>
