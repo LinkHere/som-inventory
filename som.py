@@ -22,7 +22,7 @@ class SomInventory:
         
         if selected == "Skills Lab Inventory" and index_title == None:
             index_title = "Skills Lab Inventory"
-            data = df[df['location'] == "Skills Lab"]
+            data = df[df['Location'] == "Skills Lab"]
 
 
         #data2 = data[data['Location'] == "Stock Room"]
