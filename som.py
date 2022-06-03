@@ -8,11 +8,12 @@ st.set_page_config(
 )
 st.title("Inventory") 
 rows = InventoryData.load_data()
-df = pd.DataFrame(rows,columns=['Item','Quantity','Commonly_Used_By','Location'])
-#data = df[['Item','Quantity','Commonly_Used_By','Location']]
-df.index+=1
+df = pd.DataFrame(rows)
+data = df[['Item','Quantity','Commonly_Used_By','Location']]
+data2 = data[data['Location'].isin("Stock Room")]
+#data.index+=1
 st.write("Stock Room")
-st.table(data)
+st.table(data2)
 
 st.markdown(""" <style>
 #MainMenu {visibility: hidden;}
