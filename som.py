@@ -80,7 +80,7 @@ class SomInventory:
             st.title(index_title)
             st.table(data)
             
-         if selected == "Tools" and index_title == None:
+        if selected == "Tools" and index_title == None:
             index_title = "Tools"
             data = data[data['Category'] == "Tools"]
             data['Item'] = data['Item'].str.lower()
