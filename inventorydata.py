@@ -9,7 +9,7 @@ conn = connect(credentials=credentials)
 class InventoryData:
 
     #@st.cache(ttl=600)
-    @st.experimental_singleton
+    #@st.experimental_singleton
     def load_data():
         sheet_url = st.secrets["private_gsheets_url"]
         query = f'SELECT * FROM "{sheet_url}"'
