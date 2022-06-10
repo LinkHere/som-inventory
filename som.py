@@ -13,7 +13,7 @@ class SomInventory:
 
         with st.sidebar:
             selected = option_menu("Main Menu", ["All", "Apparatus", "Equipments", "Instruments", "Models", "Supplies", "Tools"], 
-                icons=['journal-medical', 'journal-medical', 'journal-medical', 'journal-medical', 'journal-medical', 'journal-medical'], menu_icon="calendar4-week", default_index=0)
+                icons=["journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical"], menu_icon="calendar4-week", default_index=0)
         
         if selected == "All" and index_title == None:
             index_title = "All"
@@ -21,6 +21,7 @@ class SomInventory:
             data = data.sort_values(by=['Item'])
             data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
+            data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
             st.title(index_title)
             st.table(data)
         
