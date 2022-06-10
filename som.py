@@ -19,8 +19,9 @@ class SomInventory:
         
         if selected == "All" and index_title == None:
             index_title = "All"
-            #data = data
+            data['Item'] = data['Item'].str.lower()
             data = data.sort_values(by=['Item'])
+            data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
             st.title(index_title)
             st.table(data)
