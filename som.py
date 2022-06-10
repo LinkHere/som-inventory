@@ -9,26 +9,27 @@ class SomInventory:
     def inventory_list():
         index_title = None
         rows = InventoryData.load_data()
-        df = pd.DataFrame(rows)
-        data = df[['Item','Quantity','Commonly_Used_By','Location']]
+        data = pd.DataFrame(rows)
+        #data = df[['Item','Quantity','Commonly_Used_By','Location']]
 
         with st.sidebar:
-            selected = option_menu("Main Menu", ["All","Skills Lab Inventory", "Dean's Office Inventory", 'Stock Room Inventory', 'Models Inventory', 'Microscope Inventory'], 
+            selected = option_menu("Main Menu", ["All","Tools", "Dean's Office Inventory", 'Stock Room Inventory', 'Models Inventory', 'Microscope Inventory'], 
                 icons=['journal-medical', 'journal-medical', 'journal-medical', 'journal-medical', 'journal-medical', 'journal-medical'], menu_icon="calendar4-week", default_index=0)
         
         if selected == "All" and index_title == None:
             index_title = "All"
-            data = data
+            #data = data
             data = data.sort_values(by=['Item'])
             data.index = data.index.factorize()[0] + 1
             st.title(index_title)
             st.table(data)
         
-        if selected == "Skills Lab Inventory" and index_title == None:
-            index_title = "Skills Lab Inventory"
-            data = data[data['Location'] == "Skills Lab"]
+        if selected == "Tools" and index_title == None:
+            index_title = "Tools"
+            data = data[data['Category'] == "Tools"]
             data = data.sort_values(by=['Item'])
             data.index = data.index.factorize()[0] + 1
+            data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
             st.title(index_title)
             st.table(data)
 
