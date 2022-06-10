@@ -9,7 +9,8 @@ sheet_url = st.secrets["private_gsheets_url"]
 query = f'SELECT * FROM "{sheet_url}"'
 
 class InventoryData:
-
+    
+    @st.cache(ttl=600)
     def load_data():
         rows = conn.execute(query, headers=1)
         rows = rows.fetchall()
