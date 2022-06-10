@@ -11,7 +11,7 @@ class SomInventory:
         rows = InventoryData.load_data()
         data = pd.DataFrame(rows)
         #data = df[['Item','Quantity','Commonly_Used_By','Location']]
-        st.write(data)
+        st.write(rows)
 
         with st.sidebar:
             selected = option_menu("Main Menu", ["All","Tools", "Dean's Office Inventory", 'Stock Room Inventory', 'Models Inventory', 'Microscope Inventory'], 
