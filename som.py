@@ -12,7 +12,7 @@ class SomInventory:
         data = pd.DataFrame(rows)
 
         with st.sidebar:
-            selected = option_menu("Main Menu", ["All","Tools", "Dean's Office Inventory", 'Stock Room Inventory', 'Models Inventory', 'Microscope Inventory'], 
+            selected = option_menu("Main Menu", ["All",'Apparatus", "Equipments", "Instruments", "Models", "Supplies", "Tools"], 
                 icons=['journal-medical', 'journal-medical', 'journal-medical', 'journal-medical', 'journal-medical', 'journal-medical'], menu_icon="calendar4-week", default_index=0)
         
         if selected == "All" and index_title == None:
@@ -24,9 +24,9 @@ class SomInventory:
             st.title(index_title)
             st.table(data)
         
-        if selected == "Tools" and index_title == None:
-            index_title = "Tools"
-            data = data[data['Category'] == "Tools"]
+        if selected == "Apparatus" and index_title == None:
+            index_title = "Apparatus"
+            data = data[data['Category'] == "Apparatus"]
             data['Item'] = data['Item'].str.lower()
             data = data.sort_values(by=['Item'])
             data['Item'] = data['Item'].str.title()
