@@ -36,37 +36,60 @@ class SomInventory:
             st.title(index_title)
             st.table(data)
 
-        if selected == "Dean's Office Inventory" and index_title == None:
-            index_title = "Dean's Office Inventory"
-            data = data[data['Location'] == "Dean's Office"]
+        if selected == "Equipments" and index_title == None:
+            index_title = "Equipments"
+            data = data[data['Category'] == "Equipments"]
+            data['Item'] = data['Item'].str.lower()
             data = data.sort_values(by=['Item'])
+            data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
+            data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
             st.title(index_title)
             st.table(data)
 
-        if selected == "Stock Room Inventory" and index_title == None:
-            index_title = "Stock Room Inventory"
-            data = data[data['Location'] == "Stock Room"]
+        if selected == "Instruments" and index_title == None:
+            index_title = "Instruments"
+            data = data[data['Category'] == "Instruments"]
+            data['Item'] = data['Item'].str.lower()
             data = data.sort_values(by=['Item'])
+            data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
+            data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
             st.title(index_title)
             st.table(data)
 
-        if selected == "Models Inventory" and index_title == None:
-            index_title = "Models Inventory"
-            datamsg = "Not yet sorted!"
-            #data = data.sort_values(by=['Item'])
-            #data.index = data.index.factorize()[0] + 1
+        if selected == "Models" and index_title == None:
+            index_title = "Models"
+            data = data[data['Category'] == "Models"]
+            data['Item'] = data['Item'].str.lower()
+            data = data.sort_values(by=['Item'])
+            data['Item'] = data['Item'].str.title()
+            data.index = data.index.factorize()[0] + 1
+            data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
             st.title(index_title)
-            st.write(datamsg)
-
-        if selected == "Microscope Inventory" and index_title == None:
-            index_title = "Microscope Inventory"
-            datamsg = "Not yet sorted!"
-            #data = data.sort_values(by=['Item'])
-            #data.index = data.index.factorize()[0] + 1 
+            st.table(data)
+            
+        if selected == "Supplies" and index_title == None:
+            index_title = "Supplies"
+            data = data[data['Category'] == "Supplies"]
+            data['Item'] = data['Item'].str.lower()
+            data = data.sort_values(by=['Item'])
+            data['Item'] = data['Item'].str.title()
+            data.index = data.index.factorize()[0] + 1
+            data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
             st.title(index_title)
-            st.write(datamsg)      
+            st.table(data)
+            
+         if selected == "Tools" and index_title == None:
+            index_title = "Tools"
+            data = data[data['Category'] == "Tools"]
+            data['Item'] = data['Item'].str.lower()
+            data = data.sort_values(by=['Item'])
+            data['Item'] = data['Item'].str.title()
+            data.index = data.index.factorize()[0] + 1
+            data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
+            st.title(index_title)
+            st.table(data)   
 
         # st.title(index_title)
         # st.table(data)
