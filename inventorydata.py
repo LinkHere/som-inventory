@@ -8,7 +8,7 @@ conn = connect(credentials=credentials)
 
 class InventoryData:
 
-    @st.cache()
+    @st.cache(hash_funcs={"_thread.RLock": lambda _: None})
     def load_data():
         sheet_url = st.secrets["private_gsheets_url"]
         query = f'SELECT * FROM "{sheet_url}"'
