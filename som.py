@@ -10,8 +10,6 @@ class SomInventory:
         index_title = None
         rows = InventoryData.load_data()
         data = pd.DataFrame(rows)
-        #data = df[['Item','Quantity','Commonly_Used_By','Location']]
-        st.write(rows)
 
         with st.sidebar:
             selected = option_menu("Main Menu", ["All","Tools", "Dean's Office Inventory", 'Stock Room Inventory', 'Models Inventory', 'Microscope Inventory'], 
@@ -29,7 +27,9 @@ class SomInventory:
         if selected == "Tools" and index_title == None:
             index_title = "Tools"
             data = data[data['Category'] == "Tools"]
+            data['Item'] = data['Item'].str.lower()
             data = data.sort_values(by=['Item'])
+            data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
             st.title(index_title)
