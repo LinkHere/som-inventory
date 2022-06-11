@@ -5,6 +5,8 @@ from gsheetsdb import connect
 
 class InventoryData:
     
+    global conn, query
+    
     credentials = DataBConnection.load_credentials()
     sheet_url = st.secrets["private_gsheets_url"]
     conn = connect(credentials=credentials)
