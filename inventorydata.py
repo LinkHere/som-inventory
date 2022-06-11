@@ -5,10 +5,10 @@ from gsheetsdb import connect
 
 class InventoryData:
     
-    global credentials = DataBConnection.load_credentials()
-    global conn = connect(credentials=credentials)
-    global sheet_url = st.secrets["private_gsheets_url"]
-    global query = f'SELECT * FROM "{sheet_url}"'
+    credentials = DataBConnection.load_credentials()
+    sheet_url = st.secrets["private_gsheets_url"]
+    conn = connect(credentials=credentials)
+    query = f'SELECT * FROM "{sheet_url}"'
     
     def load_data():
         rows = conn.execute(query, headers=1)
