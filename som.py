@@ -12,7 +12,7 @@ class SomInventory:
         data = pd.DataFrame(rows)
 
         with st.sidebar:
-            selected = option_menu("Main Menu", ["All", "Apparatus", "Equipments", "Instruments", "Models", "Lab Supplies", "Tools"], 
+            selected = option_menu("Inventory", ["All", "Apparatus", "Equipments", "Instruments", "Models", "Lab Supplies", "Office Supplies" "Tools"], 
                 icons=["journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical"], menu_icon="calendar4-week", default_index=0)
         
         if selected == "All" and index_title == None:
@@ -22,8 +22,6 @@ class SomInventory:
             data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
-            st.title(index_title)
-            st.table(data)
         
         if selected == "Apparatus" and index_title == None:
             index_title = "Apparatus"
@@ -33,8 +31,6 @@ class SomInventory:
             data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
-            st.title(index_title)
-            st.table(data)
 
         if selected == "Equipments" and index_title == None:
             index_title = "Equipments"
@@ -44,8 +40,6 @@ class SomInventory:
             data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
-            st.title(index_title)
-            st.table(data)
 
         if selected == "Instruments" and index_title == None:
             index_title = "Instruments"
@@ -55,8 +49,6 @@ class SomInventory:
             data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
-            st.title(index_title)
-            st.table(data)
 
         if selected == "Models" and index_title == None:
             index_title = "Models"
@@ -66,12 +58,19 @@ class SomInventory:
             data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
-            st.title(index_title)
-            st.table(data)
             
         if selected == "Lab Supplies" and index_title == None:
             index_title = "Lab Supplies"
             data = data[data['Category'] == "Lab Supplies"]
+            data['Item'] = data['Item'].str.lower()
+            data = data.sort_values(by=['Item'])
+            data['Item'] = data['Item'].str.title()
+            data.index = data.index.factorize()[0] + 1
+            data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
+            
+        if selected == "Office Supplies" and index_title == None:
+            index_title = "Office Supplies"
+            data = data[data['Category'] == "Office Supplies"]
             data['Item'] = data['Item'].str.lower()
             data = data.sort_values(by=['Item'])
             data['Item'] = data['Item'].str.title()
@@ -87,12 +86,10 @@ class SomInventory:
             data = data.sort_values(by=['Item'])
             data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
-            data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
-            st.title(index_title)
-            st.table(data)   
+            data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']] 
 
-        # st.title(index_title)
-        # st.table(data)
+        st.title(index_title)
+        st.table(data)
 
 st.set_page_config(
     page_title="SOM-Inventory",
