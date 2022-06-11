@@ -76,8 +76,6 @@ class SomInventory:
             data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
-            st.title(index_title)
-            st.table(data)
             
         if selected == "Tools" and index_title == None:
             index_title = "Tools"
