@@ -3,12 +3,12 @@ import streamlit as st
 from connection import DataBConnection
 from gsheetsdb import connect
 
-credentials = DataBConnection.load_credentials()
-conn = connect(credentials=credentials)
-sheet_url = st.secrets["private_gsheets_url"]
-query = f'SELECT * FROM "{sheet_url}"'
-
 class InventoryData:
+    
+    global credentials = DataBConnection.load_credentials()
+    global conn = connect(credentials=credentials)
+    global sheet_url = st.secrets["private_gsheets_url"]
+    global query = f'SELECT * FROM "{sheet_url}"'
     
     def load_data():
         rows = conn.execute(query, headers=1)
