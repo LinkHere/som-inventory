@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 
 from inventorydata import InventoryData
+from PIL import Image
 from streamlit_option_menu import option_menu
 
 class SomInventory:
@@ -76,6 +77,8 @@ class SomInventory:
             data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
+            image = Image.open('https://github.com/LinkHere/inventory-images-models/blob/main/OrgChart.jpg')
+            st.image(image, caption='Sunrise by the mountains')
             
         if selected == "Tools" and index_title == None:
             index_title = "Tools"
