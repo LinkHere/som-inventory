@@ -17,6 +17,8 @@ class SomInventory:
                 icons=["journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical"], menu_icon="calendar4-week", default_index=0)
         
         if selected == "All" and index_title == None:
+            image = Image.open("https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/OrgChart.jpg")
+            st.image(image, caption='Sunrise by the mountains')
             index_title = "All"
             data['Item'] = data['Item'].str.lower()
             data = data.sort_values(by=['Item'])
@@ -77,8 +79,6 @@ class SomInventory:
             data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
-            image = Image.open("https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/OrgChart.jpg")
-            st.image(image, caption='Sunrise by the mountains')
             
         if selected == "Tools" and index_title == None:
             index_title = "Tools"
