@@ -77,7 +77,7 @@ class SomInventory:
             data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
-            image = Image.open('https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/OrgChart.jpg')
+            image = Image.open("https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/OrgChart.jpg")
             st.image(image, caption='Sunrise by the mountains')
             
         if selected == "Tools" and index_title == None:
