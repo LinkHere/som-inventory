@@ -22,7 +22,7 @@ class SomInventory:
             picurl = "https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/OrgChart.jpg"
             response = requests.get(picurl)
             img = Image.open(BytesIO(response.content))
-            new_img = image.resize((600, 400))
+            new_img = Image.resize((600, 400))
             #image = Image.open("https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/OrgChart.jpg")
             st.image(new_img, caption='Sunrise by the mountains', width=400)
             index_title = "All"
