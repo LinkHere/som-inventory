@@ -23,7 +23,7 @@ class SomInventory:
             response = requests.get(picurl)
             img = Image.open(BytesIO(response.content))
             #image = Image.open("https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/OrgChart.jpg")
-            st.image(img, caption='Sunrise by the mountains', witdth=400)
+            st.image(img, caption='Sunrise by the mountains', width=400)
             index_title = "All"
             data['Item'] = data['Item'].str.lower()
             data = data.sort_values(by=['Item'])
