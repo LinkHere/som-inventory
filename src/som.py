@@ -20,7 +20,7 @@ class SomInventory:
         
         if selected == "All" and index_title == None:
             picurl = "https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/OrgChart.jpg"
-            response = requests.get(url)
+            response = requests.get(picurl)
             img = Image.open(BytesIO(response.content))
             #image = Image.open("https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/OrgChart.jpg")
             st.image(img, caption='Sunrise by the mountains')
