@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
+import requests
 
+from io import BytesIO
 from inventorydata import InventoryData
 from PIL import Image
 from streamlit_option_menu import option_menu
@@ -17,8 +19,11 @@ class SomInventory:
                 icons=["journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical"], menu_icon="calendar4-week", default_index=0)
         
         if selected == "All" and index_title == None:
-            image = Image.open("https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/OrgChart.jpg")
-            st.image(image, caption='Sunrise by the mountains')
+            picurl = "https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/OrgChart.jpg"
+            response = requests.get(url)
+            img = Image.open(BytesIO(response.content))
+            #image = Image.open("https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/OrgChart.jpg")
+            st.image(img, caption='Sunrise by the mountains')
             index_title = "All"
             data['Item'] = data['Item'].str.lower()
             data = data.sort_values(by=['Item'])
