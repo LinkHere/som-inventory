@@ -31,6 +31,8 @@ class SomInventory:
             data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
+            st.title(index_title)
+            st.table(data['Item'])
         
         if selected == "Apparatus" and index_title == None:
             index_title = "Apparatus"
@@ -96,7 +98,7 @@ class SomInventory:
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']] 
 
         st.title(index_title)
-        st.table(data['Item'])
+        st.table(data)
 
 st.set_page_config(
     page_title="SOM-Inventory",
