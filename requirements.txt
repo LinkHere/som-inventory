@@ -3,4 +3,3 @@ gsheetsdb
 pandas
 streamlit-option-menu
 Pillow
-streamlit-aggrid
