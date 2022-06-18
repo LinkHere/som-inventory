@@ -19,18 +19,18 @@ class SomInventory:
                 icons=["journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical"], menu_icon="calendar4-week", default_index=0)
         
         if selected == "All" and index_title == None:
-            picurl = "https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/bls-dummy.jpg"
-            response = requests.get(picurl)
-            img = Image.open(BytesIO(response.content))
-            new_img = img.resize((600, 400))
-            #image = Image.open("https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/OrgChart.jpg")
-            st.image(new_img, caption='Sunrise by the mountains', width=400)
             index_title = "All"
             data['Item'] = data['Item'].str.lower()
             data = data.sort_values(by=['Item'])
             data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
-            data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
+            #data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
+            picurl = "https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/bls-dummy.jpg"
+            response = requests.get(picurl)
+            img = Image.open(BytesIO(response.content))
+            new_img = img.resize((600, 400))
+            #image = Image.open("https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/OrgChart.jpg")
+            st.image(new_img, caption=data['item'], width=400)
         
         if selected == "Apparatus" and index_title == None:
             index_title = "Apparatus"
