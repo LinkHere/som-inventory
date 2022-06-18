@@ -105,8 +105,8 @@ class SomInventory:
             data.index = data.index.factorize()[0] + 1
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']] 
 
-        st.title(index_title)
-        st.table(data)
+#         st.title(index_title)
+#         st.table(data)
         gb = GridOptionsBuilder.from_dataframe(data)
         gb.configure_pagination(paginationAutoPageSize=True) #Add pagination
         gb.configure_side_bar() #Add a sidebar
