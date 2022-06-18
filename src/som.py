@@ -31,7 +31,8 @@ class SomInventory:
             new_img = img.resize((600, 400))
             #data = data['Item']
             #image = Image.open("https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/OrgChart.jpg")
-            st.image(new_img, caption=data['Item'], width=400)
+            for a in data:
+                st.image(new_img, caption=a['Item'], width=400)
         
         if selected == "Apparatus" and index_title == None:
             index_title = "Apparatus"
