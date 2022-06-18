@@ -1,5 +1,5 @@
+streamlit-aggrid
 streamlit
-streamlit_aggrid
 gsheetsdb
 pandas
 streamlit-option-menu
