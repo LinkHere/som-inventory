@@ -96,7 +96,7 @@ class SomInventory:
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']] 
 
         st.title(index_title)
-        st.table(data)
+        st.table(data['Item'])
 
 st.set_page_config(
     page_title="SOM-Inventory",
