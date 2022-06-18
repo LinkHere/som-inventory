@@ -5,7 +5,7 @@ import requests
 from io import BytesIO
 from inventorydata import InventoryData
 from PIL import Image
-from st_aggrid import AgGrid
+#from st_aggrid import AgGrid
 from streamlit_option_menu import option_menu
 
 class SomInventory:
@@ -105,9 +105,9 @@ class SomInventory:
             data.index = data.index.factorize()[0] + 1
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']] 
 
-#         st.title(index_title)
-#         st.table(data)
-        #AgGrid(data)
+        st.title(index_title)
+        st.table(data)
+#         AgGrid(data)
 
 st.set_page_config(
     page_title="SOM-Inventory",
