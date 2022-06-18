@@ -29,8 +29,9 @@ class SomInventory:
             response = requests.get(picurl)
             img = Image.open(BytesIO(response.content))
             new_img = img.resize((600, 400))
+            #data = data['Item']
             #image = Image.open("https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/OrgChart.jpg")
-            st.image(new_img, caption=data['item'], width=400)
+            st.image(new_img, caption=data['Item'], width=400)
         
         if selected == "Apparatus" and index_title == None:
             index_title = "Apparatus"
