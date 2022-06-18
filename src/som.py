@@ -32,8 +32,9 @@ class SomInventory:
             #data = data['Item']
             #image = Image.open("https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/OrgChart.jpg")
             for a in data:
-                st.image(new_img, caption=a['Item'], width=400)
-        
+                #st.image(new_img, caption=a['Item'], width=400)
+                st.write(a)
+                
         if selected == "Apparatus" and index_title == None:
             index_title = "Apparatus"
             data = data[data['Category'] == "Apparatus"]
