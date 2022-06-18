@@ -24,7 +24,7 @@ class SomInventory:
             data = data.sort_values(by=['Item'])
             data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
-            
+            st.write(data.columns[0])
             for row in data.itertuples(index = True, name ='Pandas'):
                 st.write(getattr(row, "Item"), getattr(row, "Location"))
                 
