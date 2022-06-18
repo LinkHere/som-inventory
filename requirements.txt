@@ -1,6 +1,6 @@
 streamlit
+streamlit-aggrid
 gsheetsdb
 pandas
 streamlit-option-menu
 pillow
-streamlit-aggrid
