@@ -26,7 +26,7 @@ class SomInventory:
             data.index = data.index.factorize()[0] + 1
             
             for row in data.itertuples(index = True, name ='Pandas'):
-                st.write(getattr(row, "Item"), getattr(row, "Quantity"))
+                st.write(getattr(row, "Item"), getattr(row, "Location"))
                 
 #             #data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
 #             picurl = "https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/bls-dummy.jpg"
