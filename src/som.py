@@ -107,7 +107,7 @@ class SomInventory:
 
 #         st.title(index_title)
 #         st.table(data)
-        AgGrid(data)
+        #AgGrid(data)
 
 st.set_page_config(
     page_title="SOM-Inventory",
