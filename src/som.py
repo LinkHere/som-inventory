@@ -121,7 +121,7 @@ class SomInventory:
             fit_columns_on_grid_load=False,
             theme='blue', #Add theme color to the table
             enable_enterprise_modules=True,
-            height=500, 
+            height=600, 
             width='100%',
             reload_data=True
             )
@@ -129,7 +129,7 @@ class SomInventory:
         data = grid_response['data']
         selected = grid_response['selected_rows'] 
         df = pd.DataFrame(selected) #Pass the selected rows to a new dataframe df
-        AgGrid(df)
+        AgGrid(data)
 
 st.set_page_config(
     page_title="SOM-Inventory",
