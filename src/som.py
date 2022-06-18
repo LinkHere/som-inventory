@@ -5,7 +5,7 @@ import requests
 from io import BytesIO
 from inventorydata import InventoryData
 from PIL import Image
-#from st_aggrid import AgGrid
+from st_aggrid import AgGrid
 from streamlit_option_menu import option_menu
 
 class SomInventory:
