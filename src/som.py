@@ -5,6 +5,7 @@ import requests
 from io import BytesIO
 from inventorydata import InventoryData
 from PIL import Image
+from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
 from streamlit_option_menu import option_menu
 
 class SomInventory:
@@ -24,9 +25,9 @@ class SomInventory:
             data = data.sort_values(by=['Item'])
             data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
-            st.write(data.columns[0])
-            for row in data.itertuples(index = True, name ='Pandas'):
-                st.write(getattr(row, "Item"), getattr(row, "Location"))
+#             st.write(data.columns[0])
+#             for row in data.itertuples(index = True, name ='Pandas'):
+#                 st.write(getattr(row, "Item"), getattr(row, "Location"))
                 
 #             #data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
 #             picurl = "https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/bls-dummy.jpg"
@@ -104,8 +105,9 @@ class SomInventory:
             data.index = data.index.factorize()[0] + 1
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']] 
 
-        st.title(index_title)
-        st.table(data)
+#         st.title(index_title)
+#         st.table(data)
+        AgGrid(data)
 
 st.set_page_config(
     page_title="SOM-Inventory",
