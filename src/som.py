@@ -24,16 +24,16 @@ class SomInventory:
             data = data.sort_values(by=['Item'])
             data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
-            #data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
-            picurl = "https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/bls-dummy.jpg"
-            response = requests.get(picurl)
-            img = Image.open(BytesIO(response.content))
-            new_img = img.resize((600, 400))
-            #data = data['Item']
-            #image = Image.open("https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/OrgChart.jpg")
-            for a in data:
-                #st.image(new_img, caption=a['Item'], width=400)
-                st.write(a)
+#             #data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
+#             picurl = "https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/bls-dummy.jpg"
+#             response = requests.get(picurl)
+#             img = Image.open(BytesIO(response.content))
+#             new_img = img.resize((600, 400))
+#             #data = data['Item']
+#             #image = Image.open("https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/OrgChart.jpg")
+#             for a in data:
+#                 #st.image(new_img, caption=a['Item'], width=400)
+#                 st.write(a)
                 
         if selected == "Apparatus" and index_title == None:
             index_title = "Apparatus"
