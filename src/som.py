@@ -11,6 +11,7 @@ from streamlit_option_menu import option_menu
 class SomInventory:
 
     def inventory_list():
+        pd.set_option('display.max_colwidth', None)
         index_title = None
         rows = InventoryData.load_data()
         data = pd.DataFrame(rows)
