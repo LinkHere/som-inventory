@@ -130,7 +130,7 @@ class SomInventory:
         selected = grid_response['selected_rows'] 
         df = pd.DataFrame(selected) #Pass the selected rows to a new dataframe df
         #st.write(df["Img_url"])
-        df["Img_url"] = df["Img_url"].apply(lambda x: str(x))
+        df["Img_url"] = df["Img_url"].astype(str)
         picurl = df["Img_url"]
         st.write(df.dtypes)
         respo = requests.get(picurl)
