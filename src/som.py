@@ -126,10 +126,10 @@ class SomInventory:
             reload_data=True
             )
 
-        data = grid_response['data']
-        selected = grid_response['selected_rows'] 
-        df = pd.DataFrame(selected) #Pass the selected rows to a new dataframe df
-        #st.write(df["Category"])
+#         data = grid_response['data']
+#         selected = grid_response['selected_rows'] 
+#         df = pd.DataFrame(selected) #Pass the selected rows to a new dataframe df
+#         #st.write(df["Category"])
 
 st.set_page_config(
     page_title="SOM-Inventory",
