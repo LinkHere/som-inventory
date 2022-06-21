@@ -120,7 +120,7 @@ class SomInventory:
             data_return_mode='AS_INPUT', 
             update_mode='MODEL_CHANGED', 
             fit_columns_on_grid_load=False,
-            theme='Blue',
+            theme='fresh',
             enable_enterprise_modules=True,
             height=500,
             reload_data=True
