@@ -128,14 +128,14 @@ class SomInventory:
         data = grid_response['data']
         selected = grid_response['selected_rows'] 
         df = pd.DataFrame(selected) #Pass the selected rows to a new dataframe df
+        df = df['Img_url'].to_string(index=False)
         #st.write(df["Img_url"])
 #         df["Img_url"] = df["Img_url"].astype(str)
 #         picurl = df["Img_url"]
-        st.write(df['Img_url'].to_string(index=False))
-#         respo = requests.get(picurl)
-#         img = Image.open(BytesIO(respo.content))
-#         new_img = img.resize((600, 400))
-#         st.image(new_img, width=400)
+        respo = requests.get(df)
+        img = Image.open(BytesIO(respo.content))
+        new_img = img.resize((600, 400))
+        st.image(new_img, width=400)
 
 st.set_page_config(
     page_title="SOM-Inventory",
