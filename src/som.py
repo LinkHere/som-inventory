@@ -114,21 +114,22 @@ class SomInventory:
         gb.configure_selection('multiple', use_checkbox=True, groupSelectsChildren="Group checkbox select children") #Enable multi-row selection
         gridOptions = gb.build()
 
-        AgGrid(
+        grid_response = AgGrid(
             data,
             gridOptions=gridOptions,
             data_return_mode='AS_INPUT', 
             update_mode='MODEL_CHANGED', 
             fit_columns_on_grid_load=False,
-            theme='blue', #Add theme color to the table
+            theme='gray',
             enable_enterprise_modules=True,
-            height=600,
+            height=400,
             reload_data=True
             )
 
-#         data = grid_response['data']
-#         selected = grid_response['selected_rows'] 
-#         df = pd.DataFrame(selected) #Pass the selected rows to a new dataframe df
+        data = grid_response['data']
+        selected = grid_response['selected_rows'] 
+        df = pd.DataFrame(selected)
+        
 #         if df['Img_url'] is None:
 #             pass
 #         df['Img_url'] = df['Img_url'].to_string(index=False)
