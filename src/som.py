@@ -114,7 +114,7 @@ class SomInventory:
         gb.configure_selection('multiple', use_checkbox=True, groupSelectsChildren="Group checkbox select children") #Enable multi-row selection
         gridOptions = gb.build()
 
-        grid_response = AgGrid(
+        AgGrid(
             data,
             gridOptions=gridOptions,
             data_return_mode='AS_INPUT', 
@@ -126,19 +126,19 @@ class SomInventory:
             reload_data=True
             )
 
-        data = grid_response['data']
-        selected = grid_response['selected_rows'] 
-        df = pd.DataFrame(selected) #Pass the selected rows to a new dataframe df
-        if df['Img_url'] is None:
-            pass
-        df['Img_url'] = df['Img_url'].to_string(index=False)
-        df = df['Img_url']#st.write(df["Img_url"])
-#         df["Img_url"] = df["Img_url"].astype(str)
-#         picurl = df["Img_url"]
-        respo = requests.get(df)
-        img = Image.open(BytesIO(respo.content))
-        new_img = img.resize((600, 400))
-        st.image(new_img, width=400)
+#         data = grid_response['data']
+#         selected = grid_response['selected_rows'] 
+#         df = pd.DataFrame(selected) #Pass the selected rows to a new dataframe df
+#         if df['Img_url'] is None:
+#             pass
+#         df['Img_url'] = df['Img_url'].to_string(index=False)
+#         df = df['Img_url']#st.write(df["Img_url"])
+# #         df["Img_url"] = df["Img_url"].astype(str)
+# #         picurl = df["Img_url"]
+#         respo = requests.get(df)
+#         img = Image.open(BytesIO(respo.content))
+#         new_img = img.resize((600, 400))
+#         st.image(new_img, width=400)
 
 st.set_page_config(
     page_title="SOM-Inventory",
