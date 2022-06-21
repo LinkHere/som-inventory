@@ -131,6 +131,7 @@ class SomInventory:
         df = pd.DataFrame(selected) #Pass the selected rows to a new dataframe df
         #st.write(df["Img_url"])
         picurl = df["Img_url"]
+        st.write(picurl)
         respo = requests.get(picurl)
         img = Image.open(BytesIO(respo.content))
         new_img = img.resize((600, 400))
