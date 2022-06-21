@@ -120,7 +120,7 @@ class SomInventory:
             data_return_mode='AS_INPUT', 
             update_mode='MODEL_CHANGED', 
             fit_columns_on_grid_load=False,
-            theme='fresh',
+            theme='blue',
             enable_enterprise_modules=True,
             height=500,
             reload_data=True
@@ -129,7 +129,7 @@ class SomInventory:
         data = grid_response['data']
         selected = grid_response['selected_rows'] 
         df = pd.DataFrame(selected)
-        
+        st.table(df)
 #         if df['Img_url'] is None:
 #             pass
 #         df['Img_url'] = df['Img_url'].to_string(index=False)
