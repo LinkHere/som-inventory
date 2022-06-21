@@ -6,12 +6,11 @@ from gsheetsdb import connect
 class InventoryData:
     
     global conn, query
+    credentials = DataBConnection.load_credentials()
+    conn = connect(credentials=credentials)
     
-    def load_data():
-        credentials = DataBConnection.load_credentials()
-        sheet_url = st.secrets["private_gsheets_url"]
-        conn = connect(credentials=credentials)
-        query = f'SELECT * FROM "{sheet_url}"'
+    @st.cache(ttl=600)
+    def load_data(query):    
         rows = conn.execute(query, headers=1)
         rows = rows.fetchall()
         return rows
