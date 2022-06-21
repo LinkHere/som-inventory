@@ -127,9 +127,9 @@ class SomInventory:
             )
 
         #data = grid_response['data']
-        selected = grid_response['selected_rows'] 
-        df = pd.DataFrame(selected)
-        st.table(df)
+#         selected = grid_response['selected_rows'] 
+#         df = pd.DataFrame(selected)
+#         st.table(df)
 #         if df['Img_url'] is None:
 #             pass
 #         df['Img_url'] = df['Img_url'].to_string(index=False)
