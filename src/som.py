@@ -130,9 +130,9 @@ class SomInventory:
         selected = grid_response['selected_rows'] 
         df = pd.DataFrame(selected) #Pass the selected rows to a new dataframe df
         #st.write(df["Img_url"])
-        df["Img_url"] = df["Img_url"].astype(str)
+        df["Img_url"] = df["Img_url"]convert_dtypes()
         picurl = df["Img_url"]
-        st.write(picurl)
+        st.write(df.dtypes)
         respo = requests.get(picurl)
         img = Image.open(BytesIO(respo.content))
         new_img = img.resize((600, 400))
