@@ -133,11 +133,10 @@ class SomInventory:
         #st.write(df["Img_url"])
 #         df["Img_url"] = df["Img_url"].astype(str)
 #         picurl = df["Img_url"]
-#         respo = requests.get(df)
-#         img = Image.open(BytesIO(respo.content))
-#         new_img = img.resize((600, 400))
-#         st.image(new_img, width=400)
-        st.write(df)
+        respo = requests.get(df)
+        img = Image.open(BytesIO(respo.content))
+        new_img = img.resize((600, 400))
+        st.image(new_img, width=400)
 
 st.set_page_config(
     page_title="SOM-Inventory",
