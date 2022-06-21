@@ -7,7 +7,6 @@ class InventoryData:
     
     global conn, query
     
-    @st.cache
     def load_data():
         credentials = DataBConnection.load_credentials()
         sheet_url = st.secrets["private_gsheets_url"]
