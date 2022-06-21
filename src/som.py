@@ -132,7 +132,7 @@ class SomInventory:
         #st.write(df["Img_url"])
         df["Img_url"] = df["Img_url"].astype(str)
         picurl = df["Img_url"]
-        st.write(df["Img_url"].dtypes)
+        st.write(picurl)
         respo = requests.get(picurl)
         img = Image.open(BytesIO(respo.content))
         new_img = img.resize((600, 400))
