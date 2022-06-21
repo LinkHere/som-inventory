@@ -132,7 +132,7 @@ class SomInventory:
             df = pd.DataFrame(selected)
             st.table(df)
         else:
-            st.write(Select an Item/s)
+            st.write("Select an Item/s")
 #         if df['Img_url'] is None:
 #             pass
 #         df['Img_url'] = df['Img_url'].to_string(index=False)
