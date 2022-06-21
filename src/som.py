@@ -10,11 +10,11 @@ from streamlit_option_menu import option_menu
 
 class SomInventory:
 
-    def inventory_list():
+    def inventory_list(url):
         sheet_url = st.secrets["private_gsheets_url"]
         #pd.set_option('display.max_colwidth', None)
         index_title = None
-        rows = InventoryData.load_data(f'SELECT * FROM "{sheet_url}"')
+        rows = InventoryData.load_data(url)
         data = pd.DataFrame(rows)
 
         with st.sidebar:
@@ -146,7 +146,7 @@ st.set_page_config(
     page_title="SOM-Inventory",
 )
 
-SomInventory.inventory_list()
+SomInventory.inventory_list(f'SELECT * FROM "{sheet_url}"')
 
 st.markdown(""" <style>
     #MainMenu {visibility: hidden;}
