@@ -126,7 +126,7 @@ class SomInventory:
             reload_data=True
             )
 
-        data = grid_response['data']
+        #data = grid_response['data']
         selected = grid_response['selected_rows'] 
         df = pd.DataFrame(selected)
         st.table(df)
