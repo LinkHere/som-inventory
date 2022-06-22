@@ -18,7 +18,6 @@ class SomInventory:
     def inventory_list(url):
         #pd.set_option('display.max_colwidth', None)
         index_title = None
-        data = None
         rows = InventoryData.load_data(url)
         
         @st.cache
@@ -112,24 +111,23 @@ class SomInventory:
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']] 
 
         st.title(index_title)
-        if data:
-            gb = GridOptionsBuilder.from_dataframe(data)
-            gb.configure_pagination(paginationAutoPageSize=True)
-            gb.configure_side_bar()
-            gb.configure_selection('multiple', use_checkbox=True, groupSelectsChildren="Group checkbox select children")
-            gridOptions = gb.build()
+        gb = GridOptionsBuilder.from_dataframe(data)
+        gb.configure_pagination(paginationAutoPageSize=True)
+        gb.configure_side_bar()
+        gb.configure_selection('multiple', use_checkbox=True, groupSelectsChildren="Group checkbox select children")
+        gridOptions = gb.build()
 
-            grid_response = AgGrid(
-                data,
-                gridOptions=gridOptions,
-                data_return_mode='AS_INPUT', 
-                update_mode='MODEL_CHANGED', 
-                fit_columns_on_grid_load=False,
-                theme='blue',
-                enable_enterprise_modules=True,
-                height=500,
-                reload_data=True
-                )
+        grid_response = AgGrid(
+            data,
+            gridOptions=gridOptions,
+            data_return_mode='AS_INPUT', 
+            update_mode='MODEL_CHANGED', 
+            fit_columns_on_grid_load=False,
+            theme='blue',
+            enable_enterprise_modules=True,
+            height=500,
+            reload_data=True
+            )
         
         sel_rows = grid_response['selected_rows']
         if sel_rows:
