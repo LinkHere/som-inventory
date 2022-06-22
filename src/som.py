@@ -83,11 +83,11 @@ class SomInventory:
             for row in data.itertuples(index = True, name ='Pandas'):
                 #st.write(getattr(row, "Item"), getattr(row, "Img_url"))
                 picurl = getattr(row, "Img_url")
-                st.write(picurl)
+                #st.write(picurl)
                 response = requests.get(picurl)
                 img = Image.open(BytesIO(response.content))
-                new_img = img.resize((600, 400))
-                st.image(new_img, width=400)
+                new_img = img.resize((300, 300))
+                st.image(new_img)
             
             
         elif selected == "Lab Supplies":
