@@ -26,8 +26,8 @@ class SomInventory:
             return df.to_csv().encode('utf-8')
         
         with st.sidebar:
-            selected = option_menu("Inventory", ["All", "Apparatus", "Equipments", "Instruments", "Models", "Lab Supplies", "Office Supplies", "Tools"], 
-                icons=["journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical"], menu_icon="calendar4-week", default_index=0)
+            selected = option_menu("Inventory", ["All", "Apparatus", "Equipments", "Instruments", "Models", "Models Gallery", "Lab Supplies", "Office Supplies", "Tools"], 
+                icons=["journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical"], menu_icon="calendar4-week", default_index=0)
         
         if selected == "All":
             rows = InventoryData.load_data(url)
