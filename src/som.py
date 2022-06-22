@@ -1,4 +1,7 @@
 import streamlit as st
+st.set_page_config(
+    page_title="SOM-Inventory",
+)
 import streamlit.components.v1 as components
 import pandas as pd
 import requests
@@ -9,10 +12,6 @@ from inventorydata import InventoryData
 from PIL import Image
 from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
 from streamlit_option_menu import option_menu
-
-st.set_page_config(
-    page_title="SOM-Inventory",
-)
 
 class SomInventory:
 
