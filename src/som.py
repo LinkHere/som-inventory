@@ -77,7 +77,11 @@ class SomInventory:
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
         
         elif selected == "Models Gallery":
-            st.write("Under Maintenance")
+            data = pd.DataFrame(rows)
+            index_title = "Models"
+            data = data[data['Category'] == "Models"]
+            for rows in df.itertuples( name='Rows'):
+                st.write(rows)
             
             
         elif selected == "Lab Supplies":
