@@ -19,7 +19,6 @@ class SomInventory:
         #pd.set_option('display.max_colwidth', None)
         index_title = None
         rows = InventoryData.load_data(url)
-        data = pd.DataFrame(rows)
         
         @st.cache
         def convert_df(df):
@@ -30,6 +29,7 @@ class SomInventory:
                 icons=["journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical"], menu_icon="calendar4-week", default_index=0)
         
         if selected == "All":
+            data = pd.DataFrame(rows)
             index_title = "All"
             data['Item'] = data['Item'].str.lower()
             data = data.sort_values(by=['Item'])
@@ -37,6 +37,7 @@ class SomInventory:
             data.index = data.index.factorize()[0] + 1
                 
         elif selected == "Apparatus":
+            data = pd.DataFrame(rows)
             index_title = "Apparatus"
             data = data[data['Category'] == "Apparatus"]
             data['Item'] = data['Item'].str.lower()
@@ -46,6 +47,7 @@ class SomInventory:
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
 
         elif selected == "Equipments":
+            data = pd.DataFrame(rows)
             index_title = "Equipments"
             data = data[data['Category'] == "Equipments"]
             data['Item'] = data['Item'].str.lower()
@@ -55,6 +57,7 @@ class SomInventory:
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
 
         elif selected == "Instruments":
+            data = pd.DataFrame(rows)
             index_title = "Instruments"
             data = data[data['Category'] == "Instruments"]
             data['Item'] = data['Item'].str.lower()
@@ -64,6 +67,7 @@ class SomInventory:
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
 
         elif selected == "Models":
+            data = pd.DataFrame(rows)
             index_title = "Models"
             data = data[data['Category'] == "Models"]
             data['Item'] = data['Item'].str.lower()
@@ -77,6 +81,7 @@ class SomInventory:
             
             
         elif selected == "Lab Supplies":
+            data = pd.DataFrame(rows)
             index_title = "Lab Supplies"
             data = data[data['Category'] == "Lab Supplies"]
             data['Item'] = data['Item'].str.lower()
@@ -86,6 +91,7 @@ class SomInventory:
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
             
         elif selected == "Office Supplies":
+            data = pd.DataFrame(rows)
             index_title = "Office Supplies"
             data = data[data['Category'] == "Office Supplies"]
             data['Item'] = data['Item'].str.lower()
@@ -95,6 +101,7 @@ class SomInventory:
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
             
         elif selected == "Tools":
+            data = pd.DataFrame(rows)
             index_title = "Tools"
             data = data[data['Category'] == "Tools"]
             data['Item'] = data['Item'].str.lower()
