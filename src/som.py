@@ -133,7 +133,7 @@ class SomInventory:
                    "text/csv",
                    key='download-csv'
                 )
-        st.markdown(f"""title goes here {data""")
+        st.markdown(f"""title goes here {data}""")
             
 sheet_url = st.secrets["private_gsheets_url"]
 SomInventory.inventory_list(f'SELECT * FROM "{sheet_url}"')
