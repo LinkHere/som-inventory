@@ -80,7 +80,7 @@ class SomInventory:
             data = pd.DataFrame(rows)
             index_title = "Models"
             data = data[data['Category'] == "Models"]
-            for rows in df.itertuples( name='Rows'):
+            for rows in data.itertuples( name='Rows'):
                 st.write(rows)
             
             
