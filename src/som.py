@@ -105,7 +105,8 @@ class SomInventory:
     </div>
   </div>
 </div>
-    """
+    """,
+  height=600
 )
             st.title(index_title)
             st.table(data['Item'])
