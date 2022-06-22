@@ -10,12 +10,13 @@ from PIL import Image
 from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
 from streamlit_option_menu import option_menu
 
+st.set_page_config(
+    page_title="SOM-Inventory",
+)
+
 class SomInventory:
 
     def inventory_list(url):
-        st.set_page_config(
-            page_title="SOM-Inventory",
-        )
         #pd.set_option('display.max_colwidth', None)
         index_title = None
         rows = InventoryData.load_data(url)
