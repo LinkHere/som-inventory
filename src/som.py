@@ -130,7 +130,7 @@ class SomInventory:
         selected = grid_response['selected_rows']
         if selected:
             df = pd.DataFrame(selected)
-            st.table(df)
+            st.dataframe(df)
 #         if df['Img_url'] is None:
 #             pass
 #         df['Img_url'] = df['Img_url'].to_string(index=False)
