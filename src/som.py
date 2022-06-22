@@ -118,6 +118,18 @@ class SomInventory:
             if selected:
                 df = pd.DataFrame(selected)
                 st.dataframe(df)
+                csv = convert_df(df)
+                st.download_button(
+                   "Press to Download",
+                   csv,
+                   "file.csv",
+                   "text/csv",
+                   key='download-csv'
+                )
+        
+        @st.cache
+        def convert_df(df):
+            return df.to_csv().encode('utf-8')
 
             
             
