@@ -31,7 +31,7 @@ class SomInventory:
             data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
                 
-        if selected == "Apparatus" and index_title == None:
+        if selected == "Apparatus":
             index_title = "Apparatus"
             data = data[data['Category'] == "Apparatus"]
             data['Item'] = data['Item'].str.lower()
@@ -40,7 +40,7 @@ class SomInventory:
             data.index = data.index.factorize()[0] + 1
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
 
-        if selected == "Equipments" and index_title == None:
+        if selected == "Equipments":
             index_title = "Equipments"
             data = data[data['Category'] == "Equipments"]
             data['Item'] = data['Item'].str.lower()
@@ -49,7 +49,7 @@ class SomInventory:
             data.index = data.index.factorize()[0] + 1
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
 
-        if selected == "Instruments" and index_title == None:
+        if selected == "Instruments":
             index_title = "Instruments"
             data = data[data['Category'] == "Instruments"]
             data['Item'] = data['Item'].str.lower()
@@ -58,7 +58,7 @@ class SomInventory:
             data.index = data.index.factorize()[0] + 1
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
 
-        if selected == "Models" and index_title == None:
+        if selected == "Models":
             index_title = "Models"
             data = data[data['Category'] == "Models"]
             data['Item'] = data['Item'].str.lower()
@@ -68,7 +68,7 @@ class SomInventory:
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
             
             
-        if selected == "Lab Supplies" and index_title == None:
+        if selected == "Lab Supplies":
             index_title = "Lab Supplies"
             data = data[data['Category'] == "Lab Supplies"]
             data['Item'] = data['Item'].str.lower()
@@ -77,7 +77,7 @@ class SomInventory:
             data.index = data.index.factorize()[0] + 1
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
             
-        if selected == "Office Supplies" and index_title == None:
+        if selected == "Office Supplies":
             index_title = "Office Supplies"
             data = data[data['Category'] == "Office Supplies"]
             data['Item'] = data['Item'].str.lower()
@@ -86,7 +86,7 @@ class SomInventory:
             data.index = data.index.factorize()[0] + 1
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
             
-        if selected == "Tools" and index_title == None:
+        if selected == "Tools":
             index_title = "Tools"
             data = data[data['Category'] == "Tools"]
             data['Item'] = data['Item'].str.lower()
@@ -113,12 +113,11 @@ class SomInventory:
             height=500,
             reload_data=True
             )
-        
-
-        selected = grid_response['selected_rows']
-        if selected:
-            df = pd.DataFrame(selected)
-            st.dataframe(df)
+        if selected == "All":
+            selected = grid_response['selected_rows']
+            if selected:
+                df = pd.DataFrame(selected)
+                st.dataframe(df)
 
             
             
