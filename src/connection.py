@@ -2,7 +2,7 @@ import streamlit as st
 from google.oauth2 import service_account
 
 class DataBConnection:
-    @st.experimental_memo
+    @st.experimental_singleton
     def load_credentials():
         credentials = service_account.Credentials.from_service_account_info(
             st.secrets["gcp_service_account"],
