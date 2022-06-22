@@ -21,7 +21,13 @@ class SomInventory:
                 icons=["journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical"], menu_icon="calendar4-week", default_index=0)
         
         if selected == "All" and index_title == None:
-            data = alllist()
+            rows = InventoryData.load_data(url)
+            data = pd.DataFrame(rows)
+            #index_title = "All"
+            data['Item'] = data['Item'].str.lower()
+            data = data.sort_values(by=['Item'])
+            data['Item'] = data['Item'].str.title()
+            data.index = data.index.factorize()[0] + 1
 #             st.write(data.columns[0])
 #             for row in data.itertuples(index = True, name ='Pandas'):
 #                 st.write(getattr(row, "Item"), getattr(row, "Location"))
