@@ -18,6 +18,7 @@ class SomInventory:
     def inventory_list(url):
         #pd.set_option('display.max_colwidth', None)
         index_title = None
+        data = None
         rows = InventoryData.load_data(url)
         
         @st.cache
