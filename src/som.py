@@ -13,6 +13,9 @@ from streamlit_option_menu import option_menu
 class SomInventory:
 
     def inventory_list(url):
+        st.set_page_config(
+            page_title="SOM-Inventory",
+        )
         #pd.set_option('display.max_colwidth', None)
         index_title = None
         rows = InventoryData.load_data(url)
@@ -124,17 +127,13 @@ class SomInventory:
                 st.dataframe(df)
                 csv = convert_df(df)
                 st.download_button(
-                   "Press to Download",
+                   "Download Selected file as CSV",
                    csv,
                    "file.csv",
                    "text/csv",
                    key='download-csv'
                 )           
             
-st.set_page_config(
-    page_title="SOM-Inventory",
-)
-
 sheet_url = st.secrets["private_gsheets_url"]
 SomInventory.inventory_list(f'SELECT * FROM "{sheet_url}"')
 
