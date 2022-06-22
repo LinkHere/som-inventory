@@ -80,8 +80,8 @@ class SomInventory:
             data = pd.DataFrame(rows)
             index_title = "Models"
             data = data[data['Category'] == "Models"]
-            for rows in data.itertuples( name='Rows'):
-                st.write(rows)
+            for row in data.itertuples(index = True, name ='Pandas'):
+                st.write(getattr(row, "Item"), getattr(row, "Img_url"))
             
             
         elif selected == "Lab Supplies":
