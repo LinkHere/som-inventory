@@ -121,9 +121,9 @@ class SomInventory:
             reload_data=True
             )
         
-        selected = grid_response['selected_rows']
-        if selected:
-            df = pd.DataFrame(selected)
+        sel_rows = grid_response['selected_rows']
+        if sel_rows:
+            df = pd.DataFrame(sel_rows)
             st.dataframe(df)
             csv = convert_df(df)
             st.download_button(
