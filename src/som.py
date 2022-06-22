@@ -84,10 +84,10 @@ class SomInventory:
                 #st.write(getattr(row, "Item"), getattr(row, "Img_url"))
                 picurl = getattr(row, "Img_url")
                 st.write(picurl)
-#                 response = requests.get(picurl)
-#                 img = Image.open(BytesIO(response.content))
-#                 new_img = img.resize((600, 400))
-#                 st.image(new_img, width=400)
+                response = requests.get(picurl)
+                img = Image.open(BytesIO(response.content))
+                new_img = img.resize((600, 400))
+                st.image(new_img, width=400)
             
             
         elif selected == "Lab Supplies":
