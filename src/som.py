@@ -25,25 +25,11 @@ class SomInventory:
         if selected == "All" and index_title == None:
             rows = InventoryData.load_data(url)
             data = pd.DataFrame(rows)
-            #index_title = "All"
+            index_title = "All"
             data['Item'] = data['Item'].str.lower()
             data = data.sort_values(by=['Item'])
             data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
-#             st.write(data.columns[0])
-#             for row in data.itertuples(index = True, name ='Pandas'):
-#                 st.write(getattr(row, "Item"), getattr(row, "Location"))
-                
-#             #data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
-#             picurl = "https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/bls-dummy.jpg"
-#             response = requests.get(picurl)
-#             img = Image.open(BytesIO(response.content))
-#             new_img = img.resize((600, 400))
-#             #data = data['Item']
-#             #image = Image.open("https://raw.githubusercontent.com/LinkHere/inventory-images-models/main/OrgChart.jpg")
-#             for a in data:
-#                 #st.image(new_img, caption=a['Item'], width=400)
-#                 st.write(a)
                 
         if selected == "Apparatus" and index_title == None:
             index_title = "Apparatus"
@@ -80,34 +66,6 @@ class SomInventory:
             data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
-            components.html(
-    f"""
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-<p>
-  <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
-  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
-</p>
-<div class="row">
-  <div class="col">
-    <div class="collapse multi-collapse" id="multiCollapseExample1">
-      <div class="card card-body">
-        Some placeholder content for the first collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="collapse multi-collapse" id="multiCollapseExample2">
-      <div class="card card-body">
-        {st.table(data['Item'])}
-      </div>
-    </div>
-  </div>
-</div>
-    """,
-  height=600
-)
-            st.title(index_title)
             
             
         if selected == "Lab Supplies" and index_title == None:
@@ -137,12 +95,11 @@ class SomInventory:
             data.index = data.index.factorize()[0] + 1
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']] 
 
-#         st.title(index_title)
-#         st.table(data)
+        st.title(index_title)
         gb = GridOptionsBuilder.from_dataframe(data)
-        gb.configure_pagination(paginationAutoPageSize=True) #Add pagination
-        gb.configure_side_bar() #Add a sidebar
-        gb.configure_selection('multiple', use_checkbox=True, groupSelectsChildren="Group checkbox select children") #Enable multi-row selection
+        gb.configure_pagination(paginationAutoPageSize=True)
+        gb.configure_side_bar()
+        gb.configure_selection('multiple', use_checkbox=True, groupSelectsChildren="Group checkbox select children")
         gridOptions = gb.build()
 
         grid_response = AgGrid(
@@ -157,22 +114,13 @@ class SomInventory:
             reload_data=True
             )
 
-        #data = grid_response['data']
         selected = grid_response['selected_rows']
         if selected:
             df = pd.DataFrame(selected)
             st.dataframe(df)
-#         if df['Img_url'] is None:
-#             pass
-#         df['Img_url'] = df['Img_url'].to_string(index=False)
-#         df = df['Img_url']#st.write(df["Img_url"])
-# #         df["Img_url"] = df["Img_url"].astype(str)
-# #         picurl = df["Img_url"]
-#         respo = requests.get(df)
-#         img = Image.open(BytesIO(respo.content))
-#         new_img = img.resize((600, 400))
-#         st.image(new_img, width=400)
 
+            
+            
 st.set_page_config(
     page_title="SOM-Inventory",
 )
