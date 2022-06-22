@@ -81,7 +81,13 @@ class SomInventory:
             index_title = "Models"
             data = data[data['Category'] == "Models"]
             for row in data.itertuples(index = True, name ='Pandas'):
-                st.write(getattr(row, "Item"), getattr(row, "Img_url"))
+                #st.write(getattr(row, "Item"), getattr(row, "Img_url"))
+                picurl = getattr(row, "Img_url")
+                st.write(picurl)
+#             response = requests.get(picurl)
+#             img = Image.open(BytesIO(response.content))
+#             new_img = img.resize((600, 400))
+#             #data = data['Item']
             
             
         elif selected == "Lab Supplies":
