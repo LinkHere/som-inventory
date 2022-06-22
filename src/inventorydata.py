@@ -9,7 +9,7 @@ class InventoryData:
     credentials = DataBConnection.load_credentials()
     conn = connect(credentials=credentials)
     
-    @st.cache(ttl=600)
+    @st.experimental_singleton
     def load_data(query):    
         rows = conn.execute(query, headers=1)
         rows = rows.fetchall()
