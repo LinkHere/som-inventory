@@ -73,7 +73,7 @@ class SomInventory:
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
         
         elif selected == "Models Gallery":
-            pass
+            st.write("Under Maintenance")
             
             
         elif selected == "Lab Supplies":
