@@ -30,8 +30,6 @@ class SomInventory:
                 icons=["journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical"], menu_icon="calendar4-week", default_index=0)
         
         if selected == "All":
-            rows = InventoryData.load_data(url)
-            data = pd.DataFrame(rows)
             index_title = "All"
             data['Item'] = data['Item'].str.lower()
             data = data.sort_values(by=['Item'])
