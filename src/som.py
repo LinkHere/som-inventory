@@ -22,7 +22,7 @@ class SomInventory:
             selected = option_menu("Inventory", ["All", "Apparatus", "Equipments", "Instruments", "Models", "Lab Supplies", "Office Supplies", "Tools"], 
                 icons=["journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical"], menu_icon="calendar4-week", default_index=0)
         
-        if selected == "All" and index_title == None:
+        if selected == "All":
             rows = InventoryData.load_data(url)
             data = pd.DataFrame(rows)
             index_title = "All"
@@ -113,6 +113,7 @@ class SomInventory:
             height=500,
             reload_data=True
             )
+        
 
         selected = grid_response['selected_rows']
         if selected:
