@@ -17,7 +17,11 @@ class SomInventory:
         index_title = None
         rows = InventoryData.load_data(url)
         data = pd.DataFrame(rows)
-
+        
+        @st.cache
+        def convert_df(df):
+            return df.to_csv().encode('utf-8')
+        
         with st.sidebar:
             selected = option_menu("Inventory", ["All", "Apparatus", "Equipments", "Instruments", "Models", "Lab Supplies", "Office Supplies", "Tools"], 
                 icons=["journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical"], menu_icon="calendar4-week", default_index=0)
@@ -125,13 +129,7 @@ class SomInventory:
                    "file.csv",
                    "text/csv",
                    key='download-csv'
-                )
-        
-        @st.cache
-        def convert_df(df):
-            return df.to_csv().encode('utf-8')
-
-            
+                )           
             
 st.set_page_config(
     page_title="SOM-Inventory",
