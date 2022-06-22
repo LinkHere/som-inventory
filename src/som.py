@@ -120,19 +120,19 @@ class SomInventory:
             height=500,
             reload_data=True
             )
-        if selected == "All":
-            selected = grid_response['selected_rows']
-            if selected:
-                df = pd.DataFrame(selected)
-                st.dataframe(df)
-                csv = convert_df(df)
-                st.download_button(
-                   "Download Selected file as CSV",
-                   csv,
-                   "file.csv",
-                   "text/csv",
-                   key='download-csv'
-                )
+        
+        selected = grid_response['selected_rows']
+        if selected:
+            df = pd.DataFrame(selected)
+            st.dataframe(df)
+            csv = convert_df(df)
+            st.download_button(
+               "Download Selected file as CSV",
+               csv,
+               "file.csv",
+               "text/csv",
+               key='download-csv'
+               )
             
 sheet_url = st.secrets["private_gsheets_url"]
 SomInventory.inventory_list(f'SELECT * FROM "{sheet_url}"')
