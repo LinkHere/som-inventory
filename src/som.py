@@ -1,15 +1,14 @@
 import streamlit as st
+
 st.set_page_config(
     page_title="SOM-Inventory",
 )
-import streamlit.components.v1 as components
+
 import pandas as pd
-import requests
 
 
 from io import BytesIO
 from inventorydata import InventoryData
-from PIL import Image
 from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
 from streamlit_option_menu import option_menu
 
@@ -27,7 +26,8 @@ class SomInventory:
         with st.sidebar:
             selected = option_menu("Inventory", ["All", "Apparatus", "Equipments", "Instruments", "Models", "Models Gallery", "Lab Supplies", "Office Supplies", "Tools"], 
                 icons=["journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical", "journal-medical"], menu_icon="calendar4-week", default_index=0)
-        
+
+
         if selected == "All":
             data = pd.DataFrame(rows)
             index_title = "All"
@@ -35,96 +35,24 @@ class SomInventory:
             data = data.sort_values(by=['Item'])
             data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
+            check_box=True
                 
-        elif selected == "Apparatus":
+        elif selected:
             data = pd.DataFrame(rows)
-            index_title = "Apparatus"
-            data = data[data['Category'] == "Apparatus"]
+            index_title = selected
+            data = data[data['Category'] == selected]
             data['Item'] = data['Item'].str.lower()
             data = data.sort_values(by=['Item'])
             data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
-
-        elif selected == "Equipments":
-            data = pd.DataFrame(rows)
-            index_title = "Equipments"
-            data = data[data['Category'] == "Equipments"]
-            data['Item'] = data['Item'].str.lower()
-            data = data.sort_values(by=['Item'])
-            data['Item'] = data['Item'].str.title()
-            data.index = data.index.factorize()[0] + 1
-            data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
-
-        elif selected == "Instruments":
-            data = pd.DataFrame(rows)
-            index_title = "Instruments"
-            data = data[data['Category'] == "Instruments"]
-            data['Item'] = data['Item'].str.lower()
-            data = data.sort_values(by=['Item'])
-            data['Item'] = data['Item'].str.title()
-            data.index = data.index.factorize()[0] + 1
-            data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
-
-        elif selected == "Models":
-            data = pd.DataFrame(rows)
-            index_title = "Models"
-            data = data[data['Category'] == "Models"]
-            data['Item'] = data['Item'].str.lower()
-            data = data.sort_values(by=['Item'])
-            data['Item'] = data['Item'].str.title()
-            data.index = data.index.factorize()[0] + 1
-            data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
-        
-#         elif selected == "Models Gallery":
-#             data = pd.DataFrame(rows)
-#             index_title = "Models"
-#             data = data[data['Category'] == "Models"]
-#             for row in data.itertuples(index = True, name ='Pandas'):
-#                 #st.write(getattr(row, "Item"), getattr(row, "Img_url"))
-#                 picurl = getattr(row, "Img_url")
-#                 #st.write(picurl)
-#                 response = requests.get(picurl)
-#                 img = Image.open(BytesIO(response.content))
-#                 new_img = img.resize((300, 300))
-#                 st.image(new_img)
-            
-            
-        elif selected == "Lab Supplies":
-            data = pd.DataFrame(rows)
-            index_title = "Lab Supplies"
-            data = data[data['Category'] == "Lab Supplies"]
-            data['Item'] = data['Item'].str.lower()
-            data = data.sort_values(by=['Item'])
-            data['Item'] = data['Item'].str.title()
-            data.index = data.index.factorize()[0] + 1
-            data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
-            
-        elif selected == "Office Supplies":
-            data = pd.DataFrame(rows)
-            index_title = "Office Supplies"
-            data = data[data['Category'] == "Office Supplies"]
-            data['Item'] = data['Item'].str.lower()
-            data = data.sort_values(by=['Item'])
-            data['Item'] = data['Item'].str.title()
-            data.index = data.index.factorize()[0] + 1
-            data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
-            
-        elif selected == "Tools":
-            data = pd.DataFrame(rows)
-            index_title = "Tools"
-            data = data[data['Category'] == "Tools"]
-            data['Item'] = data['Item'].str.lower()
-            data = data.sort_values(by=['Item'])
-            data['Item'] = data['Item'].str.title()
-            data.index = data.index.factorize()[0] + 1
-            data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']] 
+            check_box=False
 
         st.title(index_title)
         gb = GridOptionsBuilder.from_dataframe(data)
         gb.configure_pagination(paginationAutoPageSize=True)
         gb.configure_side_bar()
-        gb.configure_selection('multiple', use_checkbox=True, groupSelectsChildren="Group checkbox select children")
+        gb.configure_selection('multiple', use_checkbox=check_box, groupSelectsChildren="Group checkbox select children")
         gridOptions = gb.build()
 
         grid_response = AgGrid(
@@ -140,7 +68,7 @@ class SomInventory:
             )
         
         sel_rows = grid_response['selected_rows']
-        if sel_rows:
+        if sel_rows and selected == "All":
             df = pd.DataFrame(sel_rows)
             st.dataframe(df)
             csv = convert_df(df)
