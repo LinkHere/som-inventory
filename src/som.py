@@ -36,6 +36,11 @@ class SomInventory:
             data['Item'] = data['Item'].str.title()
             data.index = data.index.factorize()[0] + 1
             check_box=True
+        
+        elif selected == "Models Gallery":
+            data = data[data['Category'] == selected]
+            data = data[['Item', 'Img_url']]
+            st.write(data)
                 
         elif selected:
             data = pd.DataFrame(rows)
