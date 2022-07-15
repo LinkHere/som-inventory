@@ -16,8 +16,8 @@ class SomInventory:
 
     def inventory_list(url):
         #pd.set_option('display.max_colwidth', None)
-        index_title = None
         rows = InventoryData.load_data(url)
+        #check_box = None
         
         @st.cache
         def convert_df(df):
@@ -38,8 +38,9 @@ class SomInventory:
             check_box=True
         
         elif selected == "Models Gallery":
+            st.title("Models Gallery")
             data = pd.DataFrame(rows)
-            data = data[data['Category'] == selected]
+            data = data[data['Category'] == "Models"]
             data = data[['Item', 'Img_url']]
             st.write(data)
                 
@@ -54,37 +55,38 @@ class SomInventory:
             data = data[['Item', 'Quantity', 'Commonly_Used_By', 'Location']]
             check_box=False
 
-        st.title(index_title)
-        gb = GridOptionsBuilder.from_dataframe(data)
-        gb.configure_pagination(paginationAutoPageSize=True)
-        gb.configure_side_bar()
-        gb.configure_selection('multiple', use_checkbox=check_box, groupSelectsChildren="Group checkbox select children")
-        gridOptions = gb.build()
+        if not selected == "Models Gallery":
+            st.title(index_title)
+            gb = GridOptionsBuilder.from_dataframe(data)
+            gb.configure_pagination(paginationAutoPageSize=True)
+            gb.configure_side_bar()
+            gb.configure_selection('multiple', use_checkbox=check_box, groupSelectsChildren="Group checkbox select children")
+            gridOptions = gb.build()
 
-        grid_response = AgGrid(
-            data,
-            gridOptions=gridOptions,
-            data_return_mode='AS_INPUT', 
-            update_mode='MODEL_CHANGED', 
-            fit_columns_on_grid_load=False,
-            theme='blue',
-            enable_enterprise_modules=True,
-            height=500,
-            reload_data=True
-            )
-        
-        sel_rows = grid_response['selected_rows']
-        if sel_rows and selected == "All":
-            df = pd.DataFrame(sel_rows)
-            st.dataframe(df)
-            csv = convert_df(df)
-            st.download_button(
-               "Download Selected file as CSV",
-               csv,
-               "file.csv",
-               "text/csv",
-               key='download-csv'
-               )
+            grid_response = AgGrid(
+                data,
+                gridOptions=gridOptions,
+                data_return_mode='AS_INPUT', 
+                update_mode='MODEL_CHANGED', 
+                fit_columns_on_grid_load=False,
+                theme='blue',
+                enable_enterprise_modules=True,
+                height=500,
+                reload_data=True
+                )
+
+            sel_rows = grid_response['selected_rows']
+            if sel_rows and selected == "All":
+                df = pd.DataFrame(sel_rows)
+                st.dataframe(df)
+                csv = convert_df(df)
+                st.download_button(
+                   "Download Selected file as CSV",
+                   csv,
+                   "file.csv",
+                   "text/csv",
+                   key='download-csv'
+                   )
             
 sheet_url = st.secrets["private_gsheets_url"]
 SomInventory.inventory_list(f'SELECT * FROM "{sheet_url}"')
